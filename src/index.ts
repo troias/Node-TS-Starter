@@ -1,41 +1,50 @@
-const fs = require("fs")
+const express = require("express")
+const http = require("http")
+const cors = require("cors")
 
+const app = express()
+
+type req = {
+  url: string
+  method: string
+}
 type err = {
   message: string
 }
 
-type returnFileData = {
-  data: string
-  error: err
+type res = {
+  [x: string]: any
+  statusCode: number
+  statusMessage: string
+  headers: object
+  body: string
+  send(body: string): void
 }
 
-const getFile = (path: string) => {
-  return new Promise((resolve, reject) => {
-    fs.readFile(path, "utf-8", (err: string, data: string) => {
-      if (err) {
-        reject(err)
-      }
-      resolve(data)
-    })
+app.use(
+  cors({
+    origin: "http://localhost:1234",
   })
-}
+)
 
-const writeFileToDisk = (path: string, data: string) => {
-  return new Promise((resolve, reject) => {
-    fs.writeFile(path, data, (err: string) => {
-      if (err) {
-        reject(err)
-      }
-      resolve("success")
-    })
-  })
-}
-
-writeFileToDisk("./test.txt", "hello world")
-  .then((data) => {
-    console.log(data)
-  })
-
-  .catch((err) => {
+app.get(
+  "/",
+  (req: req, res: res) => {
+    res.send(JSON.stringify({ message: "hello" }))
+  },
+  (err: err) => {
     console.log(err)
-  })
+  }
+)
+
+const server = http.createServer(app)
+
+server.listen(
+  3000,
+  () => {
+    console.log("server is running")
+  },
+  (err: err) => {
+    console.log(err)
+  }
+)
