@@ -1,6 +1,8 @@
 const express = require("express")
 const http = require("http")
 const cors = require("cors")
+const fs = require("fs")
+const path = require("path")
 
 const app = express()
 
@@ -27,10 +29,57 @@ app.use(
   })
 )
 
+app.use(express.static(__dirname))
+
 app.get(
   "/",
   (req: req, res: res) => {
-    res.send(JSON.stringify({ message: "hello" }))
+    switch (req.method) {
+      case "GET":
+        break
+
+      case "POST":
+        res.send("troias")
+        break
+      default:
+        res.send("Hello World!")
+        break
+    }
+  },
+
+  (err: err) => {
+    console.log(err)
+  }
+)
+
+app.get("/message", (req: req, res: res) => {
+  switch (req.method) {
+    case "GET":
+      break
+    case "POST":
+      res.on("data", (chunk: any) => {})
+
+      break
+    default:
+      break
+  }
+  res.end()
+})
+
+app.post(
+  "/",
+  (req: req, res: res) => {
+    res.send(JSON.stringify({ message: "troias" }))
+  },
+  (err: err) => {
+    console.log(err)
+  }
+)
+
+app.get(
+  "/message",
+  (req: req, res: res) => {
+    res.send(JSON.stringify({ message: "troias" }))
   },
   (err: err) => {
     console.log(err)
@@ -40,7 +89,7 @@ app.get(
 const server = http.createServer(app)
 
 server.listen(
-  3000,
+  3001,
   () => {
     console.log("server is running")
   },
