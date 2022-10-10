@@ -1,99 +1,40 @@
 const express = require("express")
-const http = require("http")
-const cors = require("cors")
-const fs = require("fs")
+import { Request, Response } from "express"
+
+const rootDir = require("../lib/utils/path-utils")
+
 const path = require("path")
 
+
+type Next = (err?: any) => void
+
+// const router = express.Router()
+
+
+console.log("rootDir", rootDir)
+
+const adminRoutes = require("./routes/admin")
+const shopRoutes = require("./routes/shop")
+
+
+
+
+//parser
+
 const app = express()
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+app.use("/admin", adminRoutes)
+app.use(shopRoutes)
+app.use(express.static(
 
-type req = {
-  url: string
-  method: string
-}
-type err = {
-  message: string
-}
+    path.join(rootDir)
 
-type res = {
-  [x: string]: any
-  statusCode: number
-  statusMessage: string
-  headers: object
-  body: string
-  send(body: string): void
-}
 
-app.use(
-  cors({
-    origin: "http://localhost:1234",
-  })
-)
+))
 
-app.use(express.static(__dirname))
-
-app.get(
-  "/",
-  (req: req, res: res) => {
-    switch (req.method) {
-      case "GET":
-        break
-
-      case "POST":
-        res.send("troias")
-        break
-      default:
-        res.send("Hello World!")
-        break
-    }
-  },
-
-  (err: err) => {
-    console.log(err)
-  }
-)
-
-app.get("/message", (req: req, res: res) => {
-  switch (req.method) {
-    case "GET":
-      break
-    case "POST":
-      res.on("data", (chunk: any) => {})
-
-      break
-    default:
-      break
-  }
-  res.end()
+app.use((req: Request, res: Response, next: Next) => {
+    res.status(404).sendFile(path.join(rootDir, "views", "404.html"))
 })
 
-app.post(
-  "/",
-  (req: req, res: res) => {
-    res.send(JSON.stringify({ message: "troias" }))
-  },
-  (err: err) => {
-    console.log(err)
-  }
-)
-
-app.get(
-  "/message",
-  (req: req, res: res) => {
-    res.send(JSON.stringify({ message: "troias" }))
-  },
-  (err: err) => {
-    console.log(err)
-  }
-)
-
-const server = http.createServer(app)
-
-server.listen(
-  3001,
-  () => {
-    console.log("server is running")
-  },
-  (err: err) => {
-    console.log(err)
-  }
-)
+app.listen(3001)
