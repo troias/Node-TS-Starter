@@ -19,7 +19,15 @@ router.get(
 
     console.log("admin", adminData.products)
 
-    Response.sendFile(path.join(rootDir, "views", "shop.html"))
+    Response.render("shop", {
+      prods: adminData.products,
+      pageTitle: "Shop",
+      path: "/",
+      hasProducts: adminData.products.length > 0,
+      activeShop: true,
+      productCSS: true
+    })
+
 
 
   }

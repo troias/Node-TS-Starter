@@ -19,11 +19,15 @@ const shopRoutes = require("./routes/shop")
 
 
 
+
 //parser
 
 const app = express()
 
 app.set("view engine", "ejs")
+app.set("views", __dirname + "/views")
+
+
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -37,7 +41,7 @@ app.use(express.static(
 ))
 
 app.use((req: Request, res: Response, next: Next) => {
-    res.status(404).sendFile(path.join(rootDir, "views", "404.html"))
+    res.status(404).render("404", { pageTitle: "Page Not Found" })
 })
 
 app.listen(3001)

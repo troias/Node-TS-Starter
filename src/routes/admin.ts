@@ -16,10 +16,17 @@ router.get(
   (req: Request, res: Response, next: NextFunction) => {
 
 
-    res.sendFile(path.join(rootDir, "views", "add-product.html"))
+    res.render("add-product", {
+      pageTitle: "Add Product",
+      path: "/admin/add-product",
+      formsCSS: true,
+      productCSS: true,
+      activeAddProduct: true
+    })
 
 
   }
+
 )
 
 router.post(
@@ -34,17 +41,7 @@ router.post(
   }
 )
 
-// router.post(`/product`, (req: Request, res: Response, next: NextFunction) => {
-//   console.log(req.body)
-//   const order = {
-//     title: req.body.title,
-//     price: 20,
-//   }
 
-//   res.send(JSON.stringify(order))
-
-//   return next()
-// })
 
 module.exports = router
 module.exports.products = products
