@@ -1,5 +1,6 @@
 import express from "express"
 
+
 const rootDir = require("../../lib/utils/path-utils")
 
 const path = require("path")
@@ -7,9 +8,16 @@ const path = require("path")
 const router = express.Router()
 import { Request, Response, NextFunction } from "express"
 
+const adminData = require("./admin")
+
+
+
+
 router.get(
   "/",
   (Request: Request, Response: Response, NextFunction: NextFunction) => {
+
+    console.log("admin", adminData.products)
 
     Response.sendFile(path.join(rootDir, "views", "shop.html"))
 
