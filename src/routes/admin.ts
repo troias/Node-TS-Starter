@@ -5,74 +5,31 @@ const router = express.Router()
 
 import { Request, Response, NextFunction } from "express"
 
+const productsController = require("../controllers/products")
 
 
-type Products = {
-  title: string | undefined
-  price: number | undefined
-}[] | []
-
-
-const product = [] as Products
-const dummyProductsArray = [
-  {
-    title: "Book",
-    price: 12.99
-  },
-  {
-    title: "Book 2",
-    price: 12.99
-  }
-] as Products
 
 
 
 
 router.get(
   "/add-product",
-  (req: Request, res: Response, next: NextFunction) => {
-
-
-    res.render("add-product", {
-      pageTitle: "Add Product",
-      path: "/admin/add-product",
-      formsCSS: true,
-      productCSS: true,
-      activeAddProduct: true
-    })
-
-
-  }
+  productsController.getAddProductPage.getAddProduct
 
 )
 
 router.post(
   "/add-product",
-  (req: Request, res: Response, next: NextFunction) => {
+  productsController.getAddProductPage.postAddProduct
 
-    console.log("req.body", req.body)
-
-    // product.push({ title: req.body.title, price: req.body.price }) // this is the array of products that we are pushing to
-
-    // dummy data for now
-
-    res.redirect("/")
-  }
 )
 
 router.get(
   "/products",
   (req: Request, res: Response, next: NextFunction) => {
 
+    productsController.getAddProductPage.getProducts(req, res, next)
 
-    res.render("products", {
-      products: dummyProductsArray,
-      pageTitle: "Products",
-      path: "/products",
-      hasProducts: dummyProductsArray.length > 0,
-      activeShop: true,
-      productCSS: true
-    })
   }
 
 )
@@ -80,4 +37,4 @@ router.get(
 
 
 module.exports = router
-module.exports.products = dummyProductsArray
+

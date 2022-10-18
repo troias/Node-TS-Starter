@@ -27,7 +27,9 @@ const app = express()
 app.set("view engine", "ejs")
 app.set("views", __dirname + "/views")
 
+console.log("__dirname", path.join(__dirname, "..", "public"))
 
+console.log("rootDir",)
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -35,7 +37,7 @@ app.use("/admin", adminRoutes)
 app.use(shopRoutes)
 app.use(express.static(
 
-    path.join(rootDir)
+    path.join(path.join(__dirname, "..", "public"))
 
 
 ))

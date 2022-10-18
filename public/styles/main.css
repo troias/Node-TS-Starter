@@ -62,3 +62,34 @@
   background-color: #fa923f;
   border-color: #fa923f;
 }
+
+.product-list {
+  margin: 2rem auto;
+  width: 80%;
+  text-align: center;
+  list-style: none;
+}
+.product-listproduct-item {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+  width: 45%;
+}
+.product-listproduct-item__image {
+  width: 100%;
+}
+.product-listproduct-item__title {
+  font-size: 1.25rem;
+  margin: 0.25rem 0;
+}
+.product-listproduct-item__price {
+  color: #888;
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+.product-listproduct-item:nth-child(2n) {
+  margin-left: 1rem;
+}
+
+/*# sourceMappingURL=main.css.map */
