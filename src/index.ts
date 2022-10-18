@@ -1,5 +1,6 @@
 const express = require("express")
 import { Request, Response } from "express"
+import { error } from "./controllers/error-page"
 
 const rootDir = require("../lib/utils/path-utils")
 
@@ -42,8 +43,6 @@ app.use(express.static(
 
 ))
 
-app.use((req: Request, res: Response, next: Next) => {
-    res.status(404).render("404", { pageTitle: "Page Not Found" })
-})
+app.use(error)
 
 app.listen(3001)

@@ -1,23 +1,7 @@
 import { Request, Response, NextFunction } from "express"
+import { productData } from "../models/product-model"
 
-type Products = {
-    title: string | undefined
-    price: number | undefined
-}[] | any[]
-
-
-// const product = [] as Products
-
-export const dummyProductsArray = [
-    {
-        title: "Book",
-        price: 12.99
-    },
-    {
-        title: "Book 2",
-        price: 12.99
-    }
-] as Products
+console.log("productData", productData)
 
 export const getAddProduct = (req: Request, res: Response, next: NextFunction) => {
 
@@ -34,7 +18,7 @@ export const getAddProduct = (req: Request, res: Response, next: NextFunction) =
 }
 
 export const postAddProduct = (req: Request, res: Response, next: NextFunction) => {
-    dummyProductsArray.push({
+    productData.dummyProductsArray.push({
         title: req.body.title,
         price: req.body.price
 
@@ -45,10 +29,10 @@ export const postAddProduct = (req: Request, res: Response, next: NextFunction) 
 export const getProducts = (req: Request, res: Response, next: NextFunction) => {
 
     res.render("products", {
-        products: dummyProductsArray,
+        products: productData.dummyProductsArray,
         pageTitle: "Products",
         path: "/products",
-        hasProducts: dummyProductsArray.length > 0 ? true : false,
+        hasProducts: productData.dummyProductsArray.length > 0 ? true : false,
         activeShop: true,
         productCSS: true
     })
@@ -59,5 +43,5 @@ export const getAddProductPage = {
     getAddProduct,
     postAddProduct,
     getProducts,
-    dummyProductsArray
+
 }

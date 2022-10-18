@@ -8,9 +8,9 @@ import express from "express"
 const router = express.Router()
 
 import { Request, Response, NextFunction } from "express"
-import { dummyProductsArray } from "../controllers/products"
+// import { dummyProductsArray } from "../controllers/products"
 
-
+import { productData } from "../models/product-model"
 
 
 
@@ -18,13 +18,13 @@ router.get(
   "/",
   (Request: Request, Response: Response, NextFunction: NextFunction) => {
 
-    console.log("admin", dummyProductsArray)
+    console.log("admin", productData.dummyProductsArray)
 
     Response.render("shop", {
-      prods: dummyProductsArray,
+      prods: productData.dummyProductsArray,
       pageTitle: "Shop",
       path: "/",
-      hasProducts: dummyProductsArray.length > 0,
+      hasProducts: productData.dummyProductsArray.length > 0,
       activeShop: true,
       productCSS: true
     })
