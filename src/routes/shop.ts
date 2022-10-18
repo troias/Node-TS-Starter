@@ -17,7 +17,7 @@ router.get(
   "/",
   (Request: Request, Response: Response, NextFunction: NextFunction) => {
 
-    console.log("admin", adminData.products)
+    // console.log("admin", adminData.products)
 
     Response.render("shop", {
       prods: adminData.products,

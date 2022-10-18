@@ -11,7 +11,7 @@ type Next = (err?: any) => void
 // const router = express.Router()
 
 
-console.log("rootDir", rootDir)
+// console.log("rootDir", rootDir)
 
 const adminRoutes = require("./routes/admin")
 const shopRoutes = require("./routes/shop")

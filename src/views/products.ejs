@@ -1,0 +1,32 @@
+
+    <%- include('includes/head.ejs') %>
+
+    <body>
+        <header class="main-header">
+          <%- include('includes/navigation.ejs') %>
+        
+          </header>
+    
+          
+            <h1> Products </h1>
+
+            <ul>
+                <% for (let product of products) { %>
+                    
+                <% } %>
+
+        
+
+                <% products.forEach(product => { %> <li><%= product.title %></li>  <%   }) %>
+
+            </ul>
+
+            
+    
+
+    
+    
+        
+    </body>
+    
+    <%- include('includes/end.ejs') %>

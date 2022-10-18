@@ -1,14 +1,31 @@
 import express from "express"
-const path = require("path")
 
-const rootDir = require("../../lib/utils/path-utils")
 
 const router = express.Router()
+
 import { Request, Response, NextFunction } from "express"
 
 
-type Products = any[]
-const products: Products = [] // dummy data for now
+
+type Products = {
+  title: string | undefined
+  price: number | undefined
+}[] | []
+
+
+const product = [] as Products
+const dummyProductsArray = [
+  {
+    title: "Book",
+    price: 12.99
+  },
+  {
+    title: "Book 2",
+    price: 12.99
+  }
+] as Products
+
+
 
 
 router.get(
@@ -35,13 +52,32 @@ router.post(
 
     console.log("req.body", req.body)
 
-    products.push({ title: req.body.title })
+    // product.push({ title: req.body.title, price: req.body.price }) // this is the array of products that we are pushing to
+
+    // dummy data for now
 
     res.redirect("/")
   }
 )
 
+router.get(
+  "/products",
+  (req: Request, res: Response, next: NextFunction) => {
+
+
+    res.render("products", {
+      products: dummyProductsArray,
+      pageTitle: "Products",
+      path: "/products",
+      hasProducts: dummyProductsArray.length > 0,
+      activeShop: true,
+      productCSS: true
+    })
+  }
+
+)
+
 
 
 module.exports = router
-module.exports.products = products
+module.exports.products = dummyProductsArray
