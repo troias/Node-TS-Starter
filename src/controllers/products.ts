@@ -3,7 +3,7 @@ import { productData } from "../models/product-model"
 
 // console.log("productData", productData)
 
-export const getAddProduct = (req: Request, res: Response, next: NextFunction) => {
+const getAddProduct = (req: Request, res: Response, next: NextFunction) => {
 
 
     res.render("add-product", {
@@ -18,19 +18,30 @@ export const getAddProduct = (req: Request, res: Response, next: NextFunction) =
 
 }
 
-export const postAddProduct = (req: Request, res: Response, next: NextFunction) => {
-    // productData.dummyProductsArray.push({
-    //     title: req.body.title,
-    //     price: req.body.price
+const postAddProduct = (req: Request, res: Response, next: NextFunction) => {
 
-    // })
+    const createIDwithNoDecimals = () => {
+        const id = Math.random().toFixed(0).toString()
+        return id
+    }
+
+    productData.dummyProductsArray.push({
+        title: req.body.title,
+        price: req.body.price,
+        _id: createIDwithNoDecimals() // this is a random id
+
+    })
+
+    productData.saveProductArrToFile(productData.dummyProductsArray)
+
+    res.redirect("/admin/products")
 
 }
 
-export const getProducts = (req: Request, res: Response, next: NextFunction) => {
+const getProducts = (req: Request, res: Response, next: NextFunction) => {
 
     res.render("products", {
-        products: productData.dummyProductsArray,
+        products: productData.readProductArrFromFile() ? productData.readProductArrFromFile() : (productData.dummyProductsArray ? productData.dummyProductsArray : []),
         pageTitle: "Products",
         path: "/products",
         hasProducts: productData.dummyProductsArray.length > 0 ? true : false,
@@ -38,12 +49,39 @@ export const getProducts = (req: Request, res: Response, next: NextFunction) => 
         productCSS: true
     })
 
+    // console.log("productData.dummyProductsArray", productData.dummyProductsArray)
+
 }
+
+const deleteProduct = (req: Request, res: Response, next: NextFunction) => {
+    console.log("reached deleteProduct")
+
+
+    try {
+        productData.deleteProductFromArr(req.body.productId)
+        res.redirect("/admin/products")
+    }
+    catch (err) {
+        console.log("err", err)
+    }
+
+
+
+
+
+}
+
+
+
+
+
+
 
 
 export const getAddProductPage = {
     getAddProduct,
     postAddProduct,
     getProducts,
+    deleteProduct
 
 }

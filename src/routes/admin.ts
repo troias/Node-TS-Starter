@@ -30,6 +30,15 @@ router.get(
 
 )
 
+// delete product with id
+
+router.post(
+  "/delete-product",
+  productsController.getAddProductPage.deleteProduct
+
+)
+
+
 
 
 module.exports = router
