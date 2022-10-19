@@ -11,5 +11,5 @@ addBtn.addEventListener("click", () => {
     const num2 = +num2El.value;
     const result = add(num1, num2);
     resultEl.innerText = result.toString();
-    console.log("result", result);
+    // console.log("result", result)
 });

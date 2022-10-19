@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express"
 import { productData } from "../models/product-model"
 
-console.log("productData", productData)
+// console.log("productData", productData)
 
 export const getAddProduct = (req: Request, res: Response, next: NextFunction) => {
 
@@ -14,16 +14,17 @@ export const getAddProduct = (req: Request, res: Response, next: NextFunction) =
         activeAddProduct: true
     })
 
-    res.redirect("/")
+
+
 }
 
 export const postAddProduct = (req: Request, res: Response, next: NextFunction) => {
-    productData.dummyProductsArray.push({
-        title: req.body.title,
-        price: req.body.price
+    // productData.dummyProductsArray.push({
+    //     title: req.body.title,
+    //     price: req.body.price
 
-    })
-    res.redirect("/")
+    // })
+
 }
 
 export const getProducts = (req: Request, res: Response, next: NextFunction) => {
@@ -36,6 +37,7 @@ export const getProducts = (req: Request, res: Response, next: NextFunction) => 
         activeShop: true,
         productCSS: true
     })
+
 }
 
 

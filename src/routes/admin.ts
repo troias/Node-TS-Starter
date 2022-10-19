@@ -2,9 +2,6 @@ import express from "express"
 
 
 const router = express.Router()
-
-import { Request, Response, NextFunction } from "express"
-
 const productsController = require("../controllers/products")
 
 
@@ -15,7 +12,6 @@ const productsController = require("../controllers/products")
 router.get(
   "/add-product",
   productsController.getAddProductPage.getAddProduct
-
 )
 
 router.post(
@@ -26,11 +22,11 @@ router.post(
 
 router.get(
   "/products",
-  (req: Request, res: Response, next: NextFunction) => {
+  productsController.getAddProductPage.getProducts
 
-    productsController.getAddProductPage.getProducts(req, res, next)
 
-  }
+
+
 
 )
 

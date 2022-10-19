@@ -1,54 +1,23 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
-const http = require("http");
-const cors = require("cors");
+const error_page_1 = require("./controllers/error-page");
+// const rootDir = require("../lib/utils/path-utils")
+const path = require("path");
+// const router = express.Router()
+// console.log("rootDir", rootDir)
+const adminRoutes = require("./routes/admin");
+const shopRoutes = require("./routes/shop");
+//parser
 const app = express();
-app.use(cors({
-    origin: "http://localhost:1234",
-}));
-app.get("/", (req, res) => {
-    switch (req.method) {
-        case "GET":
-            res.send(`
-        <html>
-          <head>
-            <title>My Page</title>
-            </head>
-            <body>
-              
-              <h1>My Page</h1>
-              <p>My Page Body</p>
-              <button id="btn" action="/message" method="POST">Send Message</button>
-           
-              <div id="fetch-result"></div>
-              <script src="index.ts"></script>
-              </body>
-              </html>
-              `);
-            break;
-        case "POST":
-            res.send("troias");
-            break;
-        default:
-            res.send("Hello World!");
-            break;
-    }
-}, (err) => {
-    console.log(err);
-});
-app.post("/", (req, res) => {
-    res.send(JSON.stringify({ message: "troias" }));
-}, (err) => {
-    console.log(err);
-});
-app.get("/message", (req, res) => {
-    res.send(JSON.stringify({ message: "troias" }));
-}, (err) => {
-    console.log(err);
-});
-const server = http.createServer(app);
-server.listen(3001, () => {
-    console.log("server is running");
-}, (err) => {
-    console.log(err);
-});
+app.set("view engine", "ejs");
+app.set("views", __dirname + "/views");
+// console.log("__dirname", path.join(__dirname, "..", "public"))
+console.log("rootDir");
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use("/admin", adminRoutes);
+app.use(shopRoutes);
+app.use(express.static(path.join(path.join(__dirname, "..", "public"))));
+app.use(error_page_1.error);
+app.listen(3001);
