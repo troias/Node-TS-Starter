@@ -6,6 +6,7 @@ import { Request, Response, NextFunction } from "express"
 
 
 import { productData } from "../models/product-model"
+const adminController = require("../controllers/admin-controller")
 
 
 
@@ -15,10 +16,10 @@ router.get(
 
 
 
-    Response.render("shop", {
-      prods: productData.dummyProductsArray,
-      pageTitle: "Shop",
-      path: "/",
+    Response.render("shop/index", {
+      products: productData.dummyProductsArray,
+      pageTitle: "Shop Index page",
+      path: "/shop/index",
       hasProducts: productData.dummyProductsArray.length > 0,
       activeShop: true,
       productCSS: true
@@ -28,6 +29,29 @@ router.get(
 
 
 
+  }
+)
+
+router.get(
+  "/shop/products",
+  adminController.getAddProductPage.getProducts
+
+
+
+
+
+)
+
+router.get(
+  "/shop/cart",
+  (Request: Request, Response: Response, NextFunction: NextFunction) => {
+    Response.render("shop/cart", {
+      pageTitle: "Your Cart",
+
+    }
+
+
+    )
   }
 )
 

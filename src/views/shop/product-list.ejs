@@ -1,9 +1,9 @@
 
-    <%- include('includes/head.ejs') %>
+    <%- include('../includes/head.ejs') %>
 
     <body>
         <header class="main-header">
-          <%- include('includes/navigation.ejs') %>
+          <%- include('../includes/navigation.ejs') %>
         
           </header>
     
@@ -17,7 +17,7 @@
 
         
 
-                <% products.forEach(product => { %> <ul class="products-list">
+                <%  products && products.forEach(product => { %> <ul class="products-list">
                     <li class="product-item">
                         <div class="product-item__content">
                             <h2><%= product.title %></h2>
@@ -55,4 +55,4 @@
         
     </body>
     
-    <%- include('includes/end.ejs') %>
+    <%- include('../includes/end.ejs') %>

@@ -6,9 +6,9 @@ import { productData } from "../models/product-model"
 const getAddProduct = (req: Request, res: Response, next: NextFunction) => {
 
 
-    res.render("add-product", {
+    res.render("admin/add-product", {
         pageTitle: "Add Product",
-        path: "/admin/add-product",
+        path: "admin/add-product",
         formsCSS: true,
         productCSS: true,
         activeAddProduct: true
@@ -40,10 +40,10 @@ const postAddProduct = (req: Request, res: Response, next: NextFunction) => {
 
 const getProducts = (req: Request, res: Response, next: NextFunction) => {
 
-    res.render("products", {
+    res.render('shop/product-list', {
         products: productData.readProductArrFromFile() ? productData.readProductArrFromFile() : (productData.dummyProductsArray ? productData.dummyProductsArray : []),
         pageTitle: "Products",
-        path: "/products",
+        path: "/",
         hasProducts: productData.dummyProductsArray.length > 0 ? true : false,
         activeShop: true,
         productCSS: true
@@ -71,6 +71,26 @@ const deleteProduct = (req: Request, res: Response, next: NextFunction) => {
 
 }
 
+//get admin products
+
+const getAdminProducts = (req: Request, res: Response, next: NextFunction) => {
+    try {
+        res.render('admin/product-list', {
+            products: productData.readProductArrFromFile() ? productData.readProductArrFromFile() : (productData.dummyProductsArray ? productData.dummyProductsArray : []),
+            pageTitle: "Admin Products",
+            path: "/",
+            hasProducts: productData.dummyProductsArray.length > 0 ? true : false,
+            activeShop: true,
+            productCSS: true
+        })
+    }
+    catch (err) {
+        console.log("err", err)
+    }
+
+}
+
+
 
 
 
@@ -82,6 +102,7 @@ export const getAddProductPage = {
     getAddProduct,
     postAddProduct,
     getProducts,
-    deleteProduct
+    deleteProduct,
+    getAdminProducts
 
 }
