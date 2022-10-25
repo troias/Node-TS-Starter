@@ -25,7 +25,7 @@ router.post(
 //admin products
 
 router.get(
-  "/product-list",
+  "/products",
   AdminController.getAddProductPage.getAdminProducts
 
 )

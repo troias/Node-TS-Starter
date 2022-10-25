@@ -40,7 +40,7 @@ const postAddProduct = (req: Request, res: Response, next: NextFunction) => {
 
 const getProducts = (req: Request, res: Response, next: NextFunction) => {
 
-    res.render('shop/product-list', {
+    res.render('/admin/products', {
         products: productData.readProductArrFromFile() ? productData.readProductArrFromFile() : (productData.dummyProductsArray ? productData.dummyProductsArray : []),
         pageTitle: "Products",
         path: "/",

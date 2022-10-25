@@ -28,7 +28,12 @@ app.use(express.urlencoded({ extended: true }))
 
 //routes    
 
+// admin route 
+
 app.use("/admin", adminRoutes)
+
+// shop route 
+
 app.use(shopRoutes)
 
 
