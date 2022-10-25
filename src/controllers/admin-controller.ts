@@ -9,9 +9,7 @@ const getAddProduct = (req: Request, res: Response, next: NextFunction) => {
     res.render("admin/add-product", {
         pageTitle: "Add Product",
         path: "admin/add-product",
-        formsCSS: true,
-        productCSS: true,
-        activeAddProduct: true
+
     })
 
 
@@ -45,8 +43,7 @@ const getProducts = (req: Request, res: Response, next: NextFunction) => {
         pageTitle: "Products",
         path: "/",
         hasProducts: productData.dummyProductsArray.length > 0 ? true : false,
-        activeShop: true,
-        productCSS: true
+
     })
 
     // console.log("productData.dummyProductsArray", productData.dummyProductsArray)
@@ -80,8 +77,7 @@ const getAdminProducts = (req: Request, res: Response, next: NextFunction) => {
             pageTitle: "Admin Products",
             path: "/",
             hasProducts: productData.dummyProductsArray.length > 0 ? true : false,
-            activeShop: true,
-            productCSS: true
+
         })
     }
     catch (err) {
