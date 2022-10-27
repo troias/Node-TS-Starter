@@ -3,7 +3,7 @@ import express from "express"
 const router = express.Router()
 
 
-import { getIndexPage, getCart, getProducts, getCheckout } from "../controllers/shop"
+import { getIndexPage, getCart, getProducts, getCheckout, deleteProduct } from "../controllers/shop"
 
 
 
@@ -16,11 +16,6 @@ router.get(
 router.get(
   "/shop/products",
   getProducts
-
-
-
-
-
 )
 
 router.get(
@@ -31,6 +26,11 @@ router.get(
 router.get(
   "/shop/checkout",
   getCheckout
+)
+
+router.post(
+  "/shop/delete-product",
+  deleteProduct
 )
 
 

@@ -42,25 +42,38 @@
   border: 1px solid #ccc;
   padding: 1rem;
   width: 80%;
+
+  &__button {
+    font: inherit;
+    cursor: pointer;
+    background-color: #e76d0a;
+    color: white;
+    border: 1px solid #e76d0a;
+    padding: 0.25rem 1.5rem;
+    border-radius: 3px;
+    margin-top: 1rem;
+  }
+
+
 }
 
 .product-form__control {
-  display: block;
+  display: flex;
   margin-bottom: 0.5rem;
-}
+  align-items: center;
+  flex-direction: column;
+
+
+
+} 
 
 .product-form__actions {
   text-align: center;
+
+
 }
 
-.product-form__actions button {
-  font: inherit;
-  cursor: pointer;
-  background-color: #ccc;
-  border: 1px solid #ccc;
-  padding: 0.25rem 2rem;
-  border-radius: 6px;
-}
+
 
 .product-form__actions button:hover,
 .product-form__actions button:active {
@@ -123,6 +136,7 @@
     border-radius: 6px;
     width: 100%;
     margin-top: 1rem;
+
   }
 
   &__actions button:hover,
@@ -136,6 +150,7 @@
   }
  
   &__image {
+    width: 100%;
     width: 100%;
   }
 

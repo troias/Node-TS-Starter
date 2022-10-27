@@ -26,6 +26,8 @@ const postAddProduct = (req: Request, res: Response, next: NextFunction) => {
     productData.dummyProductsArray.push({
         title: req.body.title,
         price: req.body.price,
+        imgURL: req.body.imgURL,
+        description: req.body.description,
         _id: createIDwithNoDecimals() // this is a random id
 
     })

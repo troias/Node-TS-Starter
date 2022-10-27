@@ -6,9 +6,11 @@ import { readFileSync, writeFileSync } from "fs"
 const fs = require('fs')
 
 interface Product {
+    _id: string
     title: string,
     price: number,
-    _id: string
+    imgURL: string,
+    description: string,
 }
 
 type Products = Product[] | any[]
@@ -23,6 +25,22 @@ export const dummyProductsArray = [
 
 
 const saveProductArrToFile = (productArr: Products) => {
+    // console.log("productArr", productArr)
+
+    //example of structire of productArr
+    // const productArr = [
+    //     {
+    //         _id: "123",
+    //         title: "test",
+    //         price: 123,
+    //         imgURL: "test",
+    //         description: "test"
+    //     }
+    // ]
+
+
+
+
 
     const productArrString = JSON.stringify(productArr)
 

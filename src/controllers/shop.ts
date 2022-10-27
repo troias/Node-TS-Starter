@@ -24,7 +24,7 @@ const getCart = (req: Request, res: Response, next: NextFunction) => {
 
 const getProducts = (req: Request, res: Response, next: NextFunction) => {
     res.render("./shop/product-list", {
-        products: productData.dummyProductsArray,
+        products: productData.dummyProductsArray.length > 0 ? productData.dummyProductsArray : [],
         pageTitle: "Products",
         path: "/shop/products",
         hasProducts: productData.dummyProductsArray.length > 0,
@@ -41,5 +41,13 @@ const getCheckout = (req: Request, res: Response, next: NextFunction) => {
     })
 }
 
+const deleteProduct = (req: Request, res: Response, next: NextFunction) => {
+    console.log("reached deleteProduct")
+    const productId = req.body.productId
+    productData.dummyProductsArray = productData.dummyProductsArray.filter(product => product.id !== productId)
+    res.redirect("/shop/products")
+}
 
-export { getIndexPage, getCart, getProducts, getCheckout }
+
+
+export { getIndexPage, getCart, getProducts, getCheckout, deleteProduct }

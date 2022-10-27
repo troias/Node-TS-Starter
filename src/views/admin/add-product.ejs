@@ -8,17 +8,24 @@
       </header>
 
 
-    <!-- <h1> Add Product</h1> -->
+ 
 
     <form action="/admin/add-product" method="POST" class="product-form">
         <div class="product-form__control">
 
-            <label for="title">Title</label>
+        <label for="title">Title</label>
         <input type="text" name="title"  class="product-form__actions"/>
         <label for="price">Price</label>
         <input type="text" name="price"  class="product-form__actions"/>
 
-        <button type="submit"  class="product-form__actions button" >Add Product</button>
+        <label for="description">Description</label>
+        <input type="text" name="description"  class="product-form__actions"/>
+
+        <label for="image">ImageURL</label>
+        <input type="text" name="imgURL"  class="product-form__actions"/>
+
+
+        <button type="submit"  class="product-form__button" >Add Product</button>
     </div>
     </form>
 

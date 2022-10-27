@@ -26,17 +26,16 @@
                             <p><%= product.description %></p>
                         </div>
                         <div class="product-item__image">
-                            <!-- <img src="<%= product.imageUrl %>" alt="<%= product.title %>"> -->
-                            <!-- dynamic dummy img off net-->
+                        
 
-                            <img src="https://picsum.photos/200/300" alt="dummy image">
+                            <img src=<%= product.imgURL %> alt="" class="">
                         </div>
                         <div class="product-item__actions">
                             <form action="/admin/edit-product/<%= product._id %>" method="POST">
                                 <button class="btn">Edit</button>
                             </form>
-                            <form action="/admin/delete-product " method="POST" >
-                                <input type="hidden" name="productId" value="<%= product._id %>">
+                            <form action="/shop/delete-product " method="POST" >
+                                <input type="hidden" name="productId" value=<%= product._id %>>
                                 <button class="btn">Delete</button>
                             </form>
                         </div>
