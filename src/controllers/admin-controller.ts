@@ -53,7 +53,7 @@ const getProducts = (req: Request, res: Response, next: NextFunction) => {
 }
 
 const deleteProduct = (req: Request, res: Response, next: NextFunction) => {
-    console.log("reached deleteProduct")
+    // console.log("reached deleteProduct")
 
 
     try {

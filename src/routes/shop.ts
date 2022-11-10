@@ -3,7 +3,7 @@ import express from "express"
 const router = express.Router()
 
 
-import { getIndexPage, getCart, getProducts, getCheckout, deleteProduct } from "../controllers/shop"
+import { getIndexPage, getCart, getProducts, getCheckout, deleteProduct, addToCart, getOrders, getProductDetails } from "../controllers/shop"
 
 
 
@@ -32,6 +32,30 @@ router.post(
   "/shop/delete-product",
   deleteProduct
 )
+
+router.post(
+  "/shop/add-to-cart",
+  addToCart
+)
+
+//orders page 
+
+router.get(
+  "/shop/orders",
+  getOrders
+
+)
+
+router.post(
+  "/shop/product-details/:productId",
+
+  getProductDetails
+)
+
+
+
+
+
 
 
 

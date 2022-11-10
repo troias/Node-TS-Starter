@@ -22,6 +22,9 @@ export const dummyProductsArray = [
 
 ] as Products
 
+export const dummyCartProductsArray = [
+] as Products
+
 
 
 const saveProductArrToFile = (productArr: Products) => {
@@ -87,5 +90,6 @@ export const productData = {
     dummyProductsArray,
     saveProductArrToFile,
     readProductArrFromFile,
-    deleteProductFromArr
+    deleteProductFromArr,
+    dummyCartProductsArray
 }

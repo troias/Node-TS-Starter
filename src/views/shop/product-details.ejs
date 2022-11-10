@@ -1,0 +1,37 @@
+<%- include('../includes/head.ejs') %>
+
+  <header class="main-header">
+    <%- include('../includes/navigation.ejs') %>
+
+  </header>
+
+  <main>
+    <section class="product-detail">
+
+      <div class="product-image">
+        <img src=<%=product.imgURL %> alt="" class="">
+      </div>
+
+      <div class="product-content">
+        <h1>
+          <%= product.title %>
+        </h1>
+        <h2>
+          <%= product.price %>
+        </h2>
+        <p>
+          <%= product.description %>
+        </p>
+        <form action="/shop/add-to-cart" method="POST">
+
+          <input type="hidden" name="productId" value=<%=product._id %>>
+          <button class="btn">Add to Cart</button>
+        </form>
+      </div>
+
+
+    </section>
+
+  </main>
+
+  <%- include('../includes/end.ejs') %>

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express"
-import { productData } from "../models/product-model"
+import { productData, dummyCartProductsArray } from "../models/product-model"
 
 
 
@@ -14,7 +14,7 @@ const getIndexPage = (req: Request, res: Response, next: NextFunction) => {
 }
 
 const getCart = (req: Request, res: Response, next: NextFunction) => {
-    res.render("/cart", {
+    res.render("./shop/cart", {
         pageTitle: "Your Cart",
         path: "/shop/cart",
         hasProducts: productData.dummyProductsArray.length > 0,
@@ -42,12 +42,52 @@ const getCheckout = (req: Request, res: Response, next: NextFunction) => {
 }
 
 const deleteProduct = (req: Request, res: Response, next: NextFunction) => {
-    console.log("reached deleteProduct")
+    // console.log("reached deleteProduct")
     const productId = req.body.productId
     productData.dummyProductsArray = productData.dummyProductsArray.filter(product => product.id !== productId)
     res.redirect("/shop/products")
 }
 
+const addToCart = (req: Request, res: Response, next: NextFunction) => {
+    // console.log("reached addToCart")
+    const productId = req.body.productId
+    const product = productData.dummyProductsArray.find(product => product.id === productId)
+    productData.dummyCartProductsArray.push(product)
+    res.redirect("/shop/products")
+}
+
+const getOrders = (req: Request, res: Response, next: NextFunction) => {
+    res.render("./shop/orders", {
+        pageTitle: "Your Orders",
+        path: "/shop/orders",
+        hasProducts: productData.dummyProductsArray.length > 0,
+
+    })
+
+}
+
+const getProductDetails = (req: Request, res: Response, next: NextFunction) => {
+    // console.log("reached")
+
+    const productId = req.params.productId
+    const params = req.params.productId
+
+    // console.log("params", params)
+    const product = productData.dummyProductsArray.find(product => product._id === params)
+    // console.log("product", product)
+
+    res.render(`./shop/product-details`, {
+        product,
+        pageTitle: "Product Details",
+        path: `/shop/product-details/${+params}`,
+        hasProducts: productData.dummyProductsArray.length > 0,
+
+    })
+}
 
 
-export { getIndexPage, getCart, getProducts, getCheckout, deleteProduct }
+
+
+
+
+export { getIndexPage, getCart, getProducts, getCheckout, deleteProduct, addToCart, getOrders, getProductDetails }
