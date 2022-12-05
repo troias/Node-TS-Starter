@@ -17,16 +17,19 @@
           </tr>
         </thead>
         <tbody>
-          <% cart.forEach(product=> { %>
+          <% cart && cart.forEach(product=> { %>
             <tr>
               <td>
                 <%= product.title %>
               </td>
               <td>
+                <img src=<%=product.imgURL %> alt="" class="product-item__image">
+              </td>
+              <td>
                 <%= product.quantity %>
               </td>
               <td>
-                <%= product.price %>
+                <%= product.price%>
               </td>
               <td>
                 <form action="/cart" method="POST">

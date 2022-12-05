@@ -57,8 +57,21 @@ const addToCart = (req: Request, res: Response, next: NextFunction) => {
 
     const product = productData.dummyProductsArray.find((product: Product) => product._id === productId)
 
-    productData.dummyCartProductsArray.push(product)
+    if (typeof product === "undefined") {
+        const productsFromFile = productData.readProductArrFromFile() ? productData.readProductArrFromFile() : productData.dummyProductsArray
+        console.log("productsFromFile", productsFromFile)
+        productData.dummyCartProductsArray.push(...productsFromFile)
+    } else {
+        productData.dummyCartProductsArray.push(product)
+    }
+
+
+
+
     console.log("dummyCartProductsArray", productData.dummyCartProductsArray)
+    console.log("dummyCartProductsArray", productData.dummyCartProductsArray)
+
+
     res.redirect("/shop/products")
 
 }
