@@ -5,7 +5,7 @@ import { readFileSync, writeFileSync } from "fs"
 
 const fs = require('fs')
 
-interface Product {
+export interface Product {
     _id: string
     title: string,
     price: number,
@@ -75,16 +75,17 @@ const readProductArrFromFile = () => {
 
 const deleteProductFromArr = (productId: string) => {
 
-    console.log("productId", productId)
+    // console.log("productId", productId)
 
     const productArr = readProductArrFromFile()
 
     const productArrWithoutDeletedProduct = productArr.filter((product: Product) => product._id !== productId)
-    console.log
+    // console.log
     saveProductArrToFile(productArrWithoutDeletedProduct)
 
 }
 
+console.log("cartArr", dummyCartProductsArray)
 
 export const productData = {
     dummyProductsArray,

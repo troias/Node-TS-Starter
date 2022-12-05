@@ -1,24 +1,46 @@
-<%- 
-include('../includes/head.ejs')
+<%- include('../includes/head.ejs') %>
 
-%> 
+  <header class="main-header">
+    <%- include('../includes/navigation.ejs') %>
 
-<header class="main-header">
-    <%- 
-    include('../includes/navigation.ejs')
-    
-    %>
+  </header>
 
-</header>
-
-<main>
+  <main>
     <section class="cart">
-       Cart page
+      <h1>Cart</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% cart.forEach(product=> { %>
+            <tr>
+              <td>
+                <%= product.title %>
+              </td>
+              <td>
+                <%= product.quantity %>
+              </td>
+              <td>
+                <%= product.price %>
+              </td>
+              <td>
+                <form action="/cart" method="POST">
+                  <input type="hidden" name="productId" value="<%= product._id %>" />
+                  <button type="submit" class="btn">Delete</button>
+                </form>
+              </td>
+            </tr>
+            <% }) %>
+        </tbody>
+      </table>
     </section>
-    
+    </section>
+
   </main>
 
-  <%- 
-    include('../includes/end.ejs')
-  %> 
-
+  <%- include('../includes/end.ejs') %>

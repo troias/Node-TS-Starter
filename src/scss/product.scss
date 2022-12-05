@@ -1,121 +1,110 @@
 //Product Section
+.product-detail-container {
+  padding: 2rem 0 0 2rem;
+}
 
 .product-form {
-    margin: 2rem auto;
+  margin: 2rem auto;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  width: 80%;
+
+  &__button {
+    font: inherit;
+    cursor: pointer;
+    background-color: #e76d0a;
+    color: white;
+    border: 1px solid #e76d0a;
+    padding: 0.25rem 1.5rem;
+    border-radius: 3px;
+    margin-top: 1rem;
+  }
+}
+
+.product-form__control {
+  display: flex;
+  margin-bottom: 0.5rem;
+  align-items: center;
+  flex-direction: column;
+}
+
+.product-form__actions {
+  text-align: center;
+}
+
+.product-form__actions button:hover,
+.product-form__actions button:active {
+  background-color: #fa923f;
+  border-color: #fa923f;
+}
+
+.products-list {
+  width: 80%;
+  margin: 2rem auto;
+  text-align: center;
+
+  & > li {
+    display: inline-block;
+    margin: 1rem;
     border: 1px solid #ccc;
     padding: 1rem;
-    width: 80%;
-  
-    &__button {
-      font: inherit;
-      cursor: pointer;
-      background-color: #e76d0a;
-      color: white;
-      border: 1px solid #e76d0a;
-      padding: 0.25rem 1.5rem;
-      border-radius: 3px;
-      margin-top: 1rem;
+    width: 30%;
+
+    & > h2 {
+      font-family: sans-serif;
+      font-size: 1.25rem;
+      margin: 0;
     }
-  
-  
   }
-  
-  .product-form__control {
-    display: flex;
-    margin-bottom: 0.5rem;
-    align-items: center;
-    flex-direction: column;
-  
-  
-  
-  } 
-  
-  .product-form__actions {
+
+  & > li > button {
+    font: inherit;
+    cursor: pointer;
+    background-color: #ccc;
+    border: 1px solid #ccc;
+    padding: 0.25rem 2rem;
+    border-radius: 6px;
+  }
+}
+
+.product-item {
+  margin: 2rem auto;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  width: 80%;
+  text-align: center;
+
+  &__content {
+    margin: 1rem 0;
+  }
+
+  &__actions {
     text-align: center;
-  
-  
   }
-  
-  
-  
-  .product-form__actions button:hover,
-  .product-form__actions button:active {
+
+  &__actions button {
+    font: inherit;
+    cursor: pointer;
+    background-color: #ccc;
+    border: 1px solid #ccc;
+    padding: 0.25rem 2rem;
+    border-radius: 6px;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  &__actions button:hover,
+  &__actions button:active {
     background-color: #fa923f;
     border-color: #fa923f;
   }
-  
-  
-  
-  .products-list {
-    width: 80%;
-    margin: 2rem auto;
-    text-align: center;
-  
-    & > li {
-      display: inline-block;
-      margin: 1rem;
-      border: 1px solid #ccc;
-      padding: 1rem;
-      width: 30%;
-  
-      & > h2 {
-        font-family: sans-serif;
-        font-size: 1.25rem;
-        margin: 0;
-      }
-    }
-  
-    & > li > button {
-      font: inherit;
-      cursor: pointer;
-      background-color: #ccc;
-      border: 1px solid #ccc;
-      padding: 0.25rem 2rem;
-      border-radius: 6px;
-    }
-  }
-  
-  .product-item {
-    margin: 2rem auto;
-    border: 1px solid #ccc;
-    padding: 1rem;
-    width: 80%;
-    text-align: center;
-  
-    &__content {
-      margin: 1rem 0;
-    }
-  
-    &__actions {
-      text-align: center;
-    }
-  
-    &__actions button {
-      font: inherit;
-      cursor: pointer;
-      background-color: #ccc;
-      border: 1px solid #ccc;
-      padding: 0.25rem 2rem;
-      border-radius: 6px;
-      width: 100%;
-      margin-top: 1rem;
-  
-    }
-  
-    &__actions button:hover,
-    &__actions button:active {
-      background-color: #fa923f;
-      border-color: #fa923f;
-    }
-  
-    &__actions button + button {
-      margin-left: 1rem;
-    }
-   
-    &__image {
-      width: 100%;
-      width: 100%;
-    }
 
-    }
-  
+  &__actions button + button {
+    margin-left: 1rem;
+  }
+
+  &__image {
+    width: 100%;
+    width: 100%;
+  }
+}

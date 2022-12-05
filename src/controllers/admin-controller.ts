@@ -23,10 +23,14 @@ const postAddProduct = (req: Request, res: Response, next: NextFunction) => {
         return id
     }
 
+    const imgOrDefalt = req.body.imgUrl ? req.body.imgUrl : "https://via.placeholder.com/150"
+
+
+
     productData.dummyProductsArray.push({
         title: req.body.title,
         price: req.body.price,
-        imgURL: req.body.imgURL,
+        imgURL: imgOrDefalt,
         description: req.body.description,
         _id: createIDwithNoDecimals() // this is a random id
 

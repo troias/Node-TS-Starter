@@ -47,7 +47,7 @@ router.get(
 )
 
 router.post(
-  "/shop/product-details/:productId",
+  "/shop/products/:productId",
 
   getProductDetails
 )

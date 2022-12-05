@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express"
-import { productData, dummyCartProductsArray } from "../models/product-model"
+import { productData } from "../models/product-model"
+import type { Product } from "../models/product-model"
 
 
 
@@ -18,6 +19,7 @@ const getCart = (req: Request, res: Response, next: NextFunction) => {
         pageTitle: "Your Cart",
         path: "/shop/cart",
         hasProducts: productData.dummyProductsArray.length > 0,
+        cart: productData.dummyCartProductsArray
 
     })
 }
@@ -51,9 +53,14 @@ const deleteProduct = (req: Request, res: Response, next: NextFunction) => {
 const addToCart = (req: Request, res: Response, next: NextFunction) => {
     // console.log("reached addToCart")
     const productId = req.body.productId
-    const product = productData.dummyProductsArray.find(product => product.id === productId)
+
+
+    const product = productData.dummyProductsArray.find((product: Product) => product._id === productId)
+
     productData.dummyCartProductsArray.push(product)
+    console.log("dummyCartProductsArray", productData.dummyCartProductsArray)
     res.redirect("/shop/products")
+
 }
 
 const getOrders = (req: Request, res: Response, next: NextFunction) => {
@@ -84,7 +91,7 @@ const getProductDetails = (req: Request, res: Response, next: NextFunction) => {
 
     })
 }
-
+console.log("cart", productData.dummyCartProductsArray)
 
 
 
