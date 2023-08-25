@@ -1,51 +1,38 @@
-const express = require("express")
+const express = require("express");
 
-import { error } from "./controllers/error-page"
+import { error } from "./controllers/error-page";
 
+const path = require("path");
 
-
-const path = require("path")
-
-
-
-const adminRoutes = require("./routes/admin")
-const shopRoutes = require("./routes/shop")
-
+const adminRoutes = require("./routes/admin");
+const shopRoutes = require("./routes/shop");
 
 //parser
 
-const app = express()
+const app = express();
 
-app.set("view engine", "ejs")
-app.set("views", __dirname + "/views")
+app.set("view engine", "ejs");
+app.set("views", __dirname + "/views");
 
+const viewsRoute = path.join(__dirname, "views");
 
+console.log("viewsRoute", viewsRoute);
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
+//routes
 
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+// admin route
 
-//routes    
+app.use("/admin", adminRoutes);
 
-// admin route 
+// shop route
 
-app.use("/admin", adminRoutes)
+app.use(shopRoutes);
 
-// shop route 
+app.use(express.static(path.join(path.join(__dirname, "..", "public"))));
 
-app.use(shopRoutes)
+app.use(error);
 
-
-
-
-app.use(express.static(
-
-    path.join(path.join(__dirname, "..", "public"))
-
-
-))
-
-app.use(error)
-
-app.listen(3001)
+app.listen(3001);
