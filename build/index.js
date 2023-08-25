@@ -8,7 +8,7 @@ const shopRoutes = require("./routes/shop");
 //parser
 const app = express();
 app.set("view engine", "ejs");
-app.set("views", __dirname + "/views");
+app.set("views", __dirname + "/../src/views");
 const viewsRoute = path.join(__dirname, "views");
 console.log("viewsRoute", viewsRoute);
 app.use(express.json());

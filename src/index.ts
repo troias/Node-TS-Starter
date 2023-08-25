@@ -12,7 +12,7 @@ const shopRoutes = require("./routes/shop");
 const app = express();
 
 app.set("view engine", "ejs");
-app.set("views", __dirname + "/views");
+app.set("views", __dirname + "/../src/views");
 
 const viewsRoute = path.join(__dirname, "views");
 

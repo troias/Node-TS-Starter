@@ -3,7 +3,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.productData = exports.dummyCartProductsArray = exports.dummyProductsArray = void 0;
 const fs_1 = require("fs");
-const fs = require('fs');
+const fs = require("fs");
+const p = __filename;
 exports.dummyProductsArray = [];
 exports.dummyCartProductsArray = [];
 const saveProductArrToFile = (productArr) => {
@@ -21,7 +22,7 @@ const saveProductArrToFile = (productArr) => {
     const productArrString = JSON.stringify(productArr);
     try {
         const writeFileOptions = {
-            encoding: "utf-8"
+            encoding: "utf-8",
         };
         (0, fs_1.writeFileSync)("productArr.json", productArrString, writeFileOptions);
     }
@@ -47,5 +48,5 @@ exports.productData = {
     saveProductArrToFile,
     readProductArrFromFile,
     deleteProductFromArr,
-    dummyCartProductsArray: exports.dummyCartProductsArray
+    dummyCartProductsArray: exports.dummyCartProductsArray,
 };
