@@ -3,18 +3,20 @@ const path = require("path");
 
 const p = __filename;
 
-// module.exports = class Cart {
+console.log("p", p);
+
+// module.exports = class CartModel {
 //   static addProduct(id: number, productPrice: number) {
 //     // Fetch the previous cart
-//     fs.readFile(p, (err, fileContent) => {
+//     fs.readFile(p, (err: any, fileContent: { toString: () => string }) => {
 //       let cart = { products: [], totalPrice: 0 };
 //       if (!err) {
 //         cart = JSON.parse(fileContent.toString());
 //       }
 //       // Analyze the cart => Find existing product
-//       const existingProductIndex = cart.products.findIndex(
-//         (prod) => prod.id === id
-//       );
+//       const existingProductIndex =
+//         cart.products.findIndex((prod:) => prod.id === id) || 0;
+
 //       const existingProduct = cart.products[existingProductIndex];
 //       let updatedProduct;
 //       // Add new product/ increase quantity
@@ -25,10 +27,10 @@ const p = __filename;
 //         cart.products[existingProductIndex] = updatedProduct;
 //       } else {
 //         updatedProduct = { id: id, qty: 1 };
-//         cart.products = [...cart.products, updatedProduct];
+//         cart.products = [...cart.products, updatedProduct || []];
 //       }
 //       cart.totalPrice = cart.totalPrice + +productPrice;
-//       fs.writeFile(p, JSON.stringify(cart), (err) => {
+//       fs.writeFile(p, JSON.stringify(cart), (err: any) => {
 //         console.log(err);
 //       });
 //     });

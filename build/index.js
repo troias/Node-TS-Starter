@@ -8,9 +8,10 @@ const shopRoutes = require("./routes/shop");
 //parser
 const app = express();
 app.set("view engine", "ejs");
+// path = nodejs/Node-TS-Starter/src/views
 app.set("views", __dirname + "/../src/views");
 const viewsRoute = path.join(__dirname, "views");
-console.log("viewsRoute", viewsRoute);
+// console.log("viewsRoute", viewsRoute);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 //routes

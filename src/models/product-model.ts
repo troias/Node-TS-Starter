@@ -67,10 +67,21 @@ const deleteProductFromArr = (productId: string) => {
   saveProductArrToFile(productArrWithoutDeletedProduct);
 };
 
-console.log("cartArr", dummyCartProductsArray);
+// console.log("cartArr", dummyCartProductsArray);
+
+const findById = (productId: string, cb: Function) => {
+  const productArr = readProductArrFromFile();
+
+  const product = productArr.find(
+    (product: Product) => product._id === productId
+  );
+
+  cb(product);
+};
 
 export const productData = {
   dummyProductsArray,
+  findById,
   saveProductArrToFile,
   readProductArrFromFile,
   deleteProductFromArr,
